@@ -6,8 +6,8 @@
 
 import Operation from "../Operation.js";
 import Utils from "../Utils.js";
-import Sm3 from "crypto-api/src/hasher/sm3.js";
-import CryptoApi from "crypto-api/src/crypto-api.js";
+import Sm3 from "crypto-api/src/hasher/sm3.mjs";
+import CryptoApi from "crypto-api/src/crypto-api.mjs";
 
 /**
  * SM3 operation

@@ -48,6 +48,9 @@ module.exports = {
     globalObject: "this",
     assetModuleFilename: "assets/[hash][ext][query]",
   },
+  optimization: {
+    minimize: false,
+  },
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
@@ -71,21 +74,23 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "assets/[name].css",
     }),
+    /*
     new CompressionPlugin({
       filename: "[path][base].gz",
       algorithm: "gzip",
-      test: /\.(js|css|html)$/,
+      test: /\.(js)$/,
     }),
     new CompressionPlugin({
       filename: "[path][base].br",
       algorithm: "brotliCompress",
-      test: /\.(js|css|html)$/,
+      test: /\.(js)$/,
       compressionOptions: {
         params: {
           [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
         },
       },
     }),
+    */
     new CopyWebpackPlugin({
       patterns: [
         {

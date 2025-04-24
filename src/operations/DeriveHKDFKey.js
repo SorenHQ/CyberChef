@@ -7,8 +7,8 @@
 import Operation from "../Operation.js";
 import Utils from "../Utils.js";
 import OperationError from "../errors/OperationError.js";
-import { toHex } from "crypto-api/src/encoder/hex.js";
-import CryptoApi from "crypto-api/src/crypto-api.js";
+import { toHex } from "crypto-api/src/encoder/hex.mjs";
+import CryptoApi from "crypto-api/src/crypto-api.mjs";
 
 /**
  * Derive HKDF Key operation

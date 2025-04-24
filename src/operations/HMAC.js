@@ -6,7 +6,7 @@
 
 import Operation from "../Operation.js";
 import Utils from "../Utils.js";
-import CryptoApi from "crypto-api/src/crypto-api.js";
+import CryptoApi from "crypto-api/src/crypto-api.mjs";
 
 /**
  * HMAC operation

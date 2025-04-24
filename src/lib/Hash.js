@@ -8,7 +8,7 @@
  */
 
 import Utils from "../Utils.js";
-import { toHex } from "crypto-api/src/encoder/hex.js";
+import { toHex } from "crypto-api/src/encoder/hex.mjs";
 
 /**
  * Generic hash function.

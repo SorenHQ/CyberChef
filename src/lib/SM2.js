@@ -8,8 +8,8 @@
 import OperationError from "../errors/OperationError.js";
 import { fromHex } from "../lib/Hex.js";
 import Utils from "../Utils.js";
-import Sm3 from "crypto-api/src/hasher/sm3.js";
-import {toHex} from "crypto-api/src/encoder/hex.js";
+import Sm3 from "crypto-api/src/hasher/sm3.mjs";
+import {toHex} from "crypto-api/src/encoder/hex.mjs";
 import r from "jsrsasign";
 
 /**
