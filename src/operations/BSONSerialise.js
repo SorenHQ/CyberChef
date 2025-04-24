@@ -5,7 +5,7 @@
  */
 
 import Operation from "../Operation.js";
-import {BSON} from "bson";
+import bson from "bson";
 import OperationError from "../errors/OperationError.js";
 
 /**
@@ -38,7 +38,7 @@ class BSONSerialise extends Operation {
 
         try {
             const data = JSON.parse(input);
-            return BSON.serialize(data).buffer;
+            return bson.serialize(data).buffer;
         } catch (err) {
             throw new OperationError(err.toString());
         }

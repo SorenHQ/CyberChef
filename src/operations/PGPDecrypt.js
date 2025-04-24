@@ -7,8 +7,8 @@
 import Operation from "../Operation.js";
 import { ASP, importPrivateKey } from "../lib/PGP.js";
 import OperationError from "../errors/OperationError.js";
-const {promisify} = require("es6-promisify");
-const kbpgp = require("kbpgp");
+import * as kbpgp from "kbpgp";
+import { promisify } from "es6-promisify";
 /**
  * PGP Decrypt operation
  */

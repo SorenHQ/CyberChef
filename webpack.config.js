@@ -1,14 +1,18 @@
-const webpack = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const {
+import webpack from "webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CompressionPlugin from "compression-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import {
   ModifySourcePlugin,
   ReplaceOperation,
-} = require("modify-source-webpack-plugin");
-const path = require("path");
-const zlib = require("zlib");
+} from "modify-source-webpack-plugin";
+import path from "path";
+import zlib from "zlib";
+import { fileURLToPath } from "url";
 
+// For __dirname replacement in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 /**
  * Webpack configuration details for use with Grunt.
  *
@@ -39,10 +43,12 @@ const banner = `/**
  * limitations under the License.
  */`;
 
-module.exports = {
+export default {
+  watch: true,
   entry: {
     main: "./src/index.js",
   },
+  mode: "development",
   output: {
     publicPath: "",
     globalObject: "this",
@@ -74,27 +80,27 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "assets/[name].css",
     }),
-    /*
-    new CompressionPlugin({
-      filename: "[path][base].gz",
-      algorithm: "gzip",
-      test: /\.(js)$/,
-    }),
-    new CompressionPlugin({
-      filename: "[path][base].br",
-      algorithm: "brotliCompress",
-      test: /\.(js)$/,
-      compressionOptions: {
-        params: {
-          [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
-        },
-      },
-    }),
-    */
+
+    // new CompressionPlugin({
+    //   filename: "[path][base].gz",
+    //   algorithm: "gzip",
+    //   test: /\.(js)$/,
+    // }),
+    // new CompressionPlugin({
+    //   filename: "[path][base].br",
+    //   algorithm: "brotliCompress",
+    //   test: /\.(js)$/,
+    //   compressionOptions: {
+    //     params: {
+    //       [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+    //     },
+    //   },
+    // }),
+
     new CopyWebpackPlugin({
       patterns: [
         {
-          context: "src/core/vendor/",
+          context: "src/vendor/",
           from: "tesseract/**/*",
           to: "assets/",
         },
@@ -137,16 +143,19 @@ module.exports = {
       jquery: "jquery/src/jquery",
     },
     fallback: {
+      path: "path-browserify",
+      crypto: "crypto-browserify",
+      stream: "stream-browserify",
+      zlib: "browserify-zlib",
+      buffer: false,
+      crypto: "crypto-browserify",
+      stream: "stream-browserify",
+      path: "path-browserify",
+      // For Node.js core modules you want to polyfill:
       fs: false,
-      child_process: false,
       net: false,
       tls: false,
-      path: require.resolve("path/"),
-      buffer: require.resolve("buffer/"),
-      crypto: require.resolve("crypto-browserify"),
-      stream: require.resolve("stream-browserify"),
-      zlib: require.resolve("browserify-zlib"),
-      process: false,
+      child_process: false,
       vm: false,
     },
   },
@@ -155,15 +164,34 @@ module.exports = {
     noParse: /argon2\.wasm$/,
     rules: [
       {
+        test: /node_modules[\\/]chi-squared[\\/]cdf\.js$/,
+        use: [
+          "babel-loader",
+          {
+            loader: "string-replace-loader",
+            options: {
+              search: "with (Math)",
+              replace: "const {pow,exp,log,sqrt,PI} = Math;",
+              flags: "g",
+            },
+          },
+        ],
+        enforce: "pre",
+      },
+      {
         test: /\.m?js$/,
         exclude: /node_modules\/(?!crypto-api|bootstrap)/,
-        options: {
-          configFile: path.resolve(__dirname, "babel.config.js"),
-          cacheDirectory: true,
-          compact: false,
+        use: {
+          loader: "babel-loader",
+          options: {
+            configFile: path.resolve(__dirname, "babel.config.js"),
+            cacheDirectory: true,
+            compact: false,
+          },
         },
-        type: "javascript/auto",
-        loader: "babel-loader",
+        resolve: {
+          fullySpecified: false, // Add this for the loader specifically
+        },
       },
       {
         test: /node-forge/,

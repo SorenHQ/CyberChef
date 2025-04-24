@@ -8,8 +8,8 @@ import Operation from "../Operation.js";
 import Utils from "../Utils.js";
 import {HASH_DELIM_OPTIONS} from "../lib/Delim.js";
 import OperationError from "../errors/OperationError.js";
+import * as ctph from 'ctph.js';
 
-const ctph = require('ctph.js');
 
 /**
  * Compare CTPH hashes operation

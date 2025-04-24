@@ -1,25 +1,27 @@
-module.exports = function(api) {
+export default function(api) {
     api.cache.forever();
 
     return {
-        "presets": [
+        presets: [
             ["@babel/preset-env", {
-                "modules": false,
-                "useBuiltIns": "entry",
-                "corejs": 3
+                modules: false,        // Preserves ES Modules
+                useBuiltIns: "entry",  // Polyfills based on browser targets
+                corejs: 3,             // Uses core-js@3 for polyfills
+                targets: "> 0.25%, not dead" // (Optional) Explicit targets
             }]
         ],
-        "plugins": [
-            "dynamic-import-node",
-            "@babel/plugin-syntax-import-assertions",
+        plugins: [
+            // Removed "dynamic-import-node" (incompatible with ESM)
+            "@babel/plugin-syntax-import-assertions", // For JSON imports
             [
                 "babel-plugin-transform-builtin-extend", {
-                    "globals": ["Error"]
+                    globals: ["Error"]
                 }
             ],
             [
                 "@babel/plugin-transform-runtime", {
-                    "regenerator": true
+                    regenerator: true,
+                    useESModules: true // ← Critical for ESM output
                 }
             ]
         ]

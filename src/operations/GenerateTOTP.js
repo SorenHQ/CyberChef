@@ -6,7 +6,7 @@
 
 import Operation from "../Operation.js";
 import * as OTPAuth from "otpauth";
-const { TextDecoder } = require("util"); // Add this line
+import { TextDecoder } from "util";
 
 /**
  * Generate TOTP operation

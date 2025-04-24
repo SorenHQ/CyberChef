@@ -10,9 +10,8 @@ import OperationError from "../errors/OperationError.js";
  
 import { ASP, importPublicKey } from "../lib/PGP.js";
 
-const {promisify} = require("es6-promisify");
-const kbpgp = require('kbpgp');
-
+import * as kbpgp from "kbpgp";
+import { promisify } from "es6-promisify";
 /**
  * PGP Verify operation
  */

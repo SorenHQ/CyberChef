@@ -9,7 +9,6 @@ import A1Z26CipherDecode from "./operations/A1Z26CipherDecode.js";
 import A1Z26CipherEncode from "./operations/A1Z26CipherEncode.js";
 import ADD from "./operations/ADD.js";
 import AddLineNumbers from "./operations/AddLineNumbers.js";
-import AddTextToImage from "./operations/AddTextToImage.js";
 import Adler32Checksum from "./operations/Adler32Checksum.js";
 import AESDecrypt from "./operations/AESDecrypt.js";
 import AESEncrypt from "./operations/AESEncrypt.js";
@@ -38,7 +37,6 @@ import BLAKE2b from "./operations/BLAKE2b.js";
 import BLAKE2s from "./operations/BLAKE2s.js";
 import BlowfishDecrypt from "./operations/BlowfishDecrypt.js";
 import BlowfishEncrypt from "./operations/BlowfishEncrypt.js";
-import BlurImage from "./operations/BlurImage.js";
 import Bombe from "./operations/Bombe.js";
 import BSONDeserialise from "./operations/BSONDeserialise.js";
 import BSONSerialise from "./operations/BSONSerialise.js";
@@ -64,20 +62,16 @@ import Comment from "./operations/Comment.js";
 import CompareCTPHHashes from "./operations/CompareCTPHHashes.js";
 import CompareSSDEEPHashes from "./operations/CompareSSDEEPHashes.js";
 import ConditionalJump from "./operations/ConditionalJump.js";
-import ContainImage from "./operations/ContainImage.js";
 import ConvertArea from "./operations/ConvertArea.js";
 import ConvertCoordinateFormat from "./operations/ConvertCoordinateFormat.js";
 import ConvertDataUnits from "./operations/ConvertDataUnits.js";
 import ConvertDistance from "./operations/ConvertDistance.js";
-import ConvertImageFormat from "./operations/ConvertImageFormat.js";
 import ConvertLeetSpeak from "./operations/ConvertLeetSpeak.js";
 import ConvertMass from "./operations/ConvertMass.js";
 import ConvertSpeed from "./operations/ConvertSpeed.js";
 import ConvertToNATOAlphabet from "./operations/ConvertToNATOAlphabet.js";
 import CountOccurrences from "./operations/CountOccurrences.js";
-import CoverImage from "./operations/CoverImage.js";
 import CRCChecksum from "./operations/CRCChecksum.js";
-import CropImage from "./operations/CropImage.js";
 import CSSBeautify from "./operations/CSSBeautify.js";
 import CSSMinify from "./operations/CSSMinify.js";
 import CSSSelector from "./operations/CSSSelector.js";
@@ -97,7 +91,6 @@ import DESEncrypt from "./operations/DESEncrypt.js";
 import DetectFileType from "./operations/DetectFileType.js";
 import Diff from "./operations/Difff.js";
 import DisassembleX86 from "./operations/DisassembleX86.js";
-import DitherImage from "./operations/DitherImage.js";
 import Divide from "./operations/Divide.js";
 import DNSOverHTTPS from "./operations/DNSOverHTTPS.js";
 import DropBytes from "./operations/DropBytes.js";
@@ -122,9 +115,7 @@ import ExtractFiles from "./operations/ExtractFiles.js";
 import ExtractHashes from "./operations/ExtractHashes.js";
 import ExtractID3 from "./operations/ExtractID3.js";
 import ExtractIPAddresses from "./operations/ExtractIPAddresses.js";
-import ExtractLSB from "./operations/ExtractLSB.js";
 import ExtractMACAddresses from "./operations/ExtractMACAddresses.js";
-import ExtractRGBA from "./operations/ExtractRGBA.js";
 import ExtractURLs from "./operations/ExtractURLs.js";
 import FangURL from "./operations/FangURL.js";
 import FernetDecrypt from "./operations/FernetDecrypt.js";
@@ -136,7 +127,6 @@ import Fletcher16Checksum from "./operations/Fletcher16Checksum.js";
 import Fletcher32Checksum from "./operations/Fletcher32Checksum.js";
 import Fletcher64Checksum from "./operations/Fletcher64Checksum.js";
 import Fletcher8Checksum from "./operations/Fletcher8Checksum.js";
-import FlipImage from "./operations/FlipImage.js";
 import Fork from "./operations/Fork.js";
 import FormatMACAddresses from "./operations/FormatMACAddresses.js";
 import FrequencyDistribution from "./operations/FrequencyDistribution.js";
@@ -171,10 +161,8 @@ import GenerateAllHashes from "./operations/GenerateAllHashes.js";
 import GenerateDeBruijnSequence from "./operations/GenerateDeBruijnSequence.js";
 import GenerateECDSAKeyPair from "./operations/GenerateECDSAKeyPair.js";
 import GenerateHOTP from "./operations/GenerateHOTP.js";
-import GenerateImage from "./operations/GenerateImage.js";
 import GenerateLoremIpsum from "./operations/GenerateLoremIpsum.js";
 import GeneratePGPKeyPair from "./operations/GeneratePGPKeyPair.js";
-import GenerateQRCode from "./operations/GenerateQRCode.js";
 import GenerateRSAKeyPair from "./operations/GenerateRSAKeyPair.js";
 import GenerateTOTP from "./operations/GenerateTOTP.js";
 import GenerateUUID from "./operations/GenerateUUID.js";
@@ -197,19 +185,13 @@ import HASSHClientFingerprint from "./operations/HASSHClientFingerprint.js";
 import HASSHServerFingerprint from "./operations/HASSHServerFingerprint.js";
 import HaversineDistance from "./operations/HaversineDistance.js";
 import Head from "./operations/Head.js";
-import HeatmapChart from "./operations/HeatmapChart.js";
-import HexDensityChart from "./operations/HexDensityChart.js";
+
 import HexToObjectIdentifier from "./operations/HexToObjectIdentifier.js";
 import HexToPEM from "./operations/HexToPEM.js";
 import HMAC from "./operations/HMAC.js";
 import HTMLToText from "./operations/HTMLToText.js";
 import HTTPRequest from "./operations/HTTPRequest.js";
-import ImageBrightnessContrast from "./operations/ImageBrightnessContrast.js";
-import ImageFilter from "./operations/ImageFilter.js";
-import ImageHueSaturationLightness from "./operations/ImageHueSaturationLightness.js";
-import ImageOpacity from "./operations/ImageOpacity.js";
 import IndexOfCoincidence from "./operations/IndexOfCoincidence.js";
-import InvertImage from "./operations/InvertImage.js";
 import IPv6TransitionAddresses from "./operations/IPv6TransitionAddresses.js";
 import JA3Fingerprint from "./operations/JA3Fingerprint.js";
 import JA3SFingerprint from "./operations/JA3SFingerprint.js";
@@ -257,7 +239,6 @@ import MIMEDecoding from "./operations/MIMEDecoding.js";
 import MultipleBombe from "./operations/MultipleBombe.js";
 import Multiply from "./operations/Multiply.js";
 import MurmurHash3 from "./operations/MurmurHash3.js";
-import NormaliseImage from "./operations/NormaliseImage.js";
 import NormaliseUnicode from "./operations/NormaliseUnicode.js";
 import NOT from "./operations/NOT.js";
 import NTHash from "./operations/NTHash.js";
@@ -275,7 +256,6 @@ import ParseIPRange from "./operations/ParseIPRange.js";
 import ParseIPv4Header from "./operations/ParseIPv4Header.js";
 import ParseIPv6Address from "./operations/ParseIPv6Address.js";
 import ParseObjectIDTimestamp from "./operations/ParseObjectIDTimestamp.js";
-import ParseQRCode from "./operations/ParseQRCode.js";
 import ParseSSHHostKey from "./operations/ParseSSHHostKey.js";
 import ParseTCP from "./operations/ParseTCP.js";
 import ParseTLSRecord from "./operations/ParseTLSRecord.js";
@@ -295,7 +275,6 @@ import PGPEncryptAndSign from "./operations/PGPEncryptAndSign.js";
 import PGPVerify from "./operations/PGPVerify.js";
 import PHPDeserialize from "./operations/PHPDeserialize.js";
 import PHPSerialize from "./operations/PHPSerialize.js";
-import PlayMedia from "./operations/PlayMedia.js";
 import PLISTViewer from "./operations/PLISTViewer.js";
 import PowerSet from "./operations/PowerSet.js";
 import ProtobufDecode from "./operations/ProtobufDecode.js";
@@ -307,7 +286,6 @@ import Rabbit from "./operations/Rabbit.js";
 import RailFenceCipherDecode from "./operations/RailFenceCipherDecode.js";
 import RailFenceCipherEncode from "./operations/RailFenceCipherEncode.js";
 import RAKE from "./operations/RAKE.js";
-import RandomizeColourPalette from "./operations/RandomizeColourPalette.js";
 import RawDeflate from "./operations/RawDeflate.js";
 import RawInflate from "./operations/RawInflate.js";
 import RC2Decrypt from "./operations/RC2Decrypt.js";
@@ -321,9 +299,7 @@ import RemoveEXIF from "./operations/RemoveEXIF.js";
 import RemoveLineNumbers from "./operations/RemoveLineNumbers.js";
 import RemoveNullBytes from "./operations/RemoveNullBytes.js";
 import RemoveWhitespace from "./operations/RemoveWhitespace.js";
-import RenderImage from "./operations/RenderImage.js";
 import RenderMarkdown from "./operations/RenderMarkdown.js";
-import ResizeImage from "./operations/ResizeImage.js";
 import Return from "./operations/Return.js";
 import Reverse from "./operations/Reverse.js";
 import RIPEMD from "./operations/RIPEMD.js";
@@ -334,7 +310,6 @@ import ROT13BruteForce from "./operations/ROT13BruteForce.js";
 import ROT47 from "./operations/ROT47.js";
 import ROT47BruteForce from "./operations/ROT47BruteForce.js";
 import ROT8000 from "./operations/ROT8000.js";
-import RotateImage from "./operations/RotateImage.js";
 import RotateLeft from "./operations/RotateLeft.js";
 import RotateRight from "./operations/RotateRight.js";
 import RSADecrypt from "./operations/RSADecrypt.js";
@@ -343,9 +318,7 @@ import RSASign from "./operations/RSASign.js";
 import RSAVerify from "./operations/RSAVerify.js";
 import Salsa20 from "./operations/Salsa20.js";
 import ScanForEmbeddedFiles from "./operations/ScanForEmbeddedFiles.js";
-import ScatterChart from "./operations/ScatterChart.js";
 import Scrypt from "./operations/Scrypt.js";
-import SeriesChart from "./operations/SeriesChart.js";
 import SetDifference from "./operations/SetDifference.js";
 import SetIntersection from "./operations/SetIntersection.js";
 import SetUnion from "./operations/SetUnion.js";
@@ -354,7 +327,6 @@ import SHA1 from "./operations/SHA1.js";
 import SHA2 from "./operations/SHA2.js";
 import SHA3 from "./operations/SHA3.js";
 import Shake from "./operations/Shake.js";
-import SharpenImage from "./operations/SharpenImage.js";
 import ShowBase64Offsets from "./operations/ShowBase64Offsets.js";
 import ShowOnMap from "./operations/ShowOnMap.js";
 import Shuffle from "./operations/Shuffle.js";
@@ -368,7 +340,6 @@ import SM4Encrypt from "./operations/SM4Encrypt.js";
 import Snefru from "./operations/Snefru.js";
 import Sort from "./operations/Sort.js";
 import Split from "./operations/Split.js";
-import SplitColourChannels from "./operations/SplitColourChannels.js";
 import SQLBeautify from "./operations/SQLBeautify.js";
 import SQLMinify from "./operations/SQLMinify.js";
 import SSDEEP from "./operations/SSDEEEP.js";
@@ -424,7 +395,6 @@ import ToOctal from "./operations/ToOctal.js";
 import ToPunycode from "./operations/ToPunycode.js";
 import ToQuotedPrintable from "./operations/ToQuotedPrintable.js";
 import ToSnakeCase from "./operations/ToSnakeCase.js";
-import ToTable from "./operations/ToTable.js";
 import ToUNIXTimestamp from "./operations/ToUNIXTimestamp.js";
 import ToUpperCase from "./operations/ToUpperCase.js";
 import TranslateDateTimeFormat from "./operations/TranslateDateTimeFormat.js";
@@ -442,7 +412,6 @@ import URLDecode from "./operations/URLDecode.js";
 import URLEncode from "./operations/URLEncode.js";
 import VarIntDecode from "./operations/VarIntDecode.js";
 import VarIntEncode from "./operations/VarIntEncode.js";
-import ViewBitPlane from "./operations/ViewBitPlane.js";
 import VigenèreDecode from "./operations/VigenèreDecode.js";
 import VigenèreEncode from "./operations/VigenèreEncode.js";
 import Whirlpool from "./operations/Whirlpool.js";
@@ -468,7 +437,6 @@ const app = {
   A1Z26CipherEncode,
   ADD,
   AddLineNumbers,
-  AddTextToImage,
   Adler32Checksum,
   AESDecrypt,
   AESEncrypt,
@@ -497,7 +465,6 @@ const app = {
   BLAKE2s,
   BlowfishDecrypt,
   BlowfishEncrypt,
-  BlurImage,
   Bombe,
   BSONDeserialise,
   BSONSerialise,
@@ -523,20 +490,16 @@ const app = {
   CompareCTPHHashes,
   CompareSSDEEPHashes,
   ConditionalJump,
-  ContainImage,
   ConvertArea,
   ConvertCoordinateFormat,
   ConvertDataUnits,
   ConvertDistance,
-  ConvertImageFormat,
   ConvertLeetSpeak,
   ConvertMass,
   ConvertSpeed,
   ConvertToNATOAlphabet,
   CountOccurrences,
-  CoverImage,
   CRCChecksum,
-  CropImage,
   CSSBeautify,
   CSSMinify,
   CSSSelector,
@@ -556,7 +519,6 @@ const app = {
   DetectFileType,
   Diff,
   DisassembleX86,
-  DitherImage,
   Divide,
   DNSOverHTTPS,
   DropBytes,
@@ -581,9 +543,7 @@ const app = {
   ExtractHashes,
   ExtractID3,
   ExtractIPAddresses,
-  ExtractLSB,
   ExtractMACAddresses,
-  ExtractRGBA,
   ExtractURLs,
   FangURL,
   FernetDecrypt,
@@ -595,7 +555,6 @@ const app = {
   Fletcher32Checksum,
   Fletcher64Checksum,
   Fletcher8Checksum,
-  FlipImage,
   Fork,
   FormatMACAddresses,
   FrequencyDistribution,
@@ -630,10 +589,8 @@ const app = {
   GenerateDeBruijnSequence,
   GenerateECDSAKeyPair,
   GenerateHOTP,
-  GenerateImage,
   GenerateLoremIpsum,
   GeneratePGPKeyPair,
-  GenerateQRCode,
   GenerateRSAKeyPair,
   GenerateTOTP,
   GenerateUUID,
@@ -656,19 +613,12 @@ const app = {
   HASSHServerFingerprint,
   HaversineDistance,
   Head,
-  HeatmapChart,
-  HexDensityChart,
   HexToObjectIdentifier,
   HexToPEM,
   HMAC,
   HTMLToText,
   HTTPRequest,
-  ImageBrightnessContrast,
-  ImageFilter,
-  ImageHueSaturationLightness,
-  ImageOpacity,
   IndexOfCoincidence,
-  InvertImage,
   IPv6TransitionAddresses,
   JA3Fingerprint,
   JA3SFingerprint,
@@ -716,7 +666,6 @@ const app = {
   MultipleBombe,
   Multiply,
   MurmurHash3,
-  NormaliseImage,
   NormaliseUnicode,
   NOT,
   NTHash,
@@ -734,7 +683,6 @@ const app = {
   ParseIPv4Header,
   ParseIPv6Address,
   ParseObjectIDTimestamp,
-  ParseQRCode,
   ParseSSHHostKey,
   ParseTCP,
   ParseTLSRecord,
@@ -754,7 +702,6 @@ const app = {
   PGPVerify,
   PHPDeserialize,
   PHPSerialize,
-  PlayMedia,
   PLISTViewer,
   PowerSet,
   ProtobufDecode,
@@ -766,7 +713,6 @@ const app = {
   RailFenceCipherDecode,
   RailFenceCipherEncode,
   RAKE,
-  RandomizeColourPalette,
   RawDeflate,
   RawInflate,
   RC2Decrypt,
@@ -780,9 +726,7 @@ const app = {
   RemoveLineNumbers,
   RemoveNullBytes,
   RemoveWhitespace,
-  RenderImage,
   RenderMarkdown,
-  ResizeImage,
   Return,
   Reverse,
   RIPEMD,
@@ -793,7 +737,6 @@ const app = {
   ROT47,
   ROT47BruteForce,
   ROT8000,
-  RotateImage,
   RotateLeft,
   RotateRight,
   RSADecrypt,
@@ -802,9 +745,7 @@ const app = {
   RSAVerify,
   Salsa20,
   ScanForEmbeddedFiles,
-  ScatterChart,
   Scrypt,
-  SeriesChart,
   SetDifference,
   SetIntersection,
   SetUnion,
@@ -813,7 +754,6 @@ const app = {
   SHA2,
   SHA3,
   Shake,
-  SharpenImage,
   ShowBase64Offsets,
   ShowOnMap,
   Shuffle,
@@ -827,7 +767,6 @@ const app = {
   Snefru,
   Sort,
   Split,
-  SplitColourChannels,
   SQLBeautify,
   SQLMinify,
   SSDEEP,
@@ -883,7 +822,6 @@ const app = {
   ToPunycode,
   ToQuotedPrintable,
   ToSnakeCase,
-  ToTable,
   ToUNIXTimestamp,
   ToUpperCase,
   TranslateDateTimeFormat,
@@ -901,7 +839,6 @@ const app = {
   URLEncode,
   VarIntDecode,
   VarIntEncode,
-  ViewBitPlane,
   VigenèreDecode,
   VigenèreEncode,
   Whirlpool,
@@ -921,11 +858,9 @@ const app = {
   ZlibDeflate,
   ZlibInflate,
 };
-(() => {
-  window.addEventListener("DOMContentLoaded", () => {
-    window.app = app;
-    window.Buffer = Buffer;
-    console.log(app)
-    console.log(window)
-  });
-})();
+
+window.addEventListener("DOMContentLoaded", () => {
+  window.app = app;
+  window.Buffer = Buffer;
+  console.log(window.app);
+});

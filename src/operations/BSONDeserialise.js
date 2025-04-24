@@ -5,7 +5,7 @@
  */
 
 import Operation from "../Operation.js";
-import { BSON  } from 'bson';
+import bson from "bson";
 import OperationError from "../errors/OperationError.js";
 
 /**
@@ -37,7 +37,7 @@ class BSONDeserialise extends Operation {
         if (!input.byteLength) return "";
 
         try {
-            const data = BSON.deserialize(new Buffer(input));
+            const data = bson.deserialize(new Buffer(input));
             return JSON.stringify(data, null, 2);
         } catch (err) {
             throw new OperationError(err.toString());
