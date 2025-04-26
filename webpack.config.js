@@ -45,6 +45,7 @@ const banner = `/**
 
 export default {
   watch: false,
+  target:'web',
   entry: {
     main: "./src/index.js",
   },
