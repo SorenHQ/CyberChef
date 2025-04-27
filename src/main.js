@@ -859,8 +859,8 @@ const app = {
   ZlibInflate,
 };
 
-window.addEventListener("DOMContentLoaded", () => {
+(() => {
   window.app = app;
   window.Buffer = Buffer;
   console.log(window.app);
-});
+})();
