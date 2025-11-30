@@ -1,18 +1,14 @@
-import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CompressionPlugin from "compression-webpack-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
-import {
+const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const {
   ModifySourcePlugin,
   ReplaceOperation,
-} from "modify-source-webpack-plugin";
-import path from "path";
-import zlib from "zlib";
-import { fileURLToPath } from "url";
+} = require("modify-source-webpack-plugin");
+const path = require("path");
+const zlib = require("zlib");
 
-// For __dirname replacement in ESM
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 /**
  * Webpack configuration details for use with Grunt.
  *
@@ -43,21 +39,22 @@ const banner = `/**
  * limitations under the License.
  */`;
 
-export default {
-  watch: false,
-  target:'web',
+module.exports = {
+  mode: "production",
   entry: {
     main: "./src/index.js",
   },
-  mode: "production",
   output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
     publicPath: "",
     globalObject: "this",
     assetModuleFilename: "assets/[hash][ext][query]",
   },
   optimization: {
-    minimize: false,
+    minimize: true,
   },
+  bail: false, // Continue building even if there are errors
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
@@ -81,7 +78,6 @@ export default {
     new MiniCssExtractPlugin({
       filename: "assets/[name].css",
     }),
-
     new CompressionPlugin({
       filename: "[path][base].gz",
       algorithm: "gzip",
@@ -97,7 +93,6 @@ export default {
         },
       },
     }),
-
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -135,28 +130,56 @@ export default {
             ),
           ],
         },
+        {
+          // Fix crypto-api .mjs imports by adding extensions
+          test: /crypto-api.*\.mjs$/,
+          operations: [
+            new ReplaceOperation("all", 'from "./hasher/has160"', 'from "./hasher/has160.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/md2"', 'from "./hasher/md2.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/md4"', 'from "./hasher/md4.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/md5"', 'from "./hasher/md5.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/ripemd"', 'from "./hasher/ripemd.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/sha0"', 'from "./hasher/sha0.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/sha1"', 'from "./hasher/sha1.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/sha256"', 'from "./hasher/sha256.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/sha512"', 'from "./hasher/sha512.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/snefru"', 'from "./hasher/snefru.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher/whirlpool"', 'from "./hasher/whirlpool.mjs"'),
+            new ReplaceOperation("all", 'from "./encoder/utf"', 'from "./encoder/utf.mjs"'),
+            new ReplaceOperation("all", 'from "./encoder/array-buffer"', 'from "./encoder/array-buffer.mjs"'),
+            new ReplaceOperation("all", 'from "./encoder/hex"', 'from "./encoder/hex.mjs"'),
+            new ReplaceOperation("all", 'from "./encoder/base64"', 'from "./encoder/base64.mjs"'),
+            new ReplaceOperation("all", 'from "./mac/hmac"', 'from "./mac/hmac.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher32be"', 'from "./hasher32be.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher32le"', 'from "./hasher32le.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher8"', 'from "./hasher8.mjs"'),
+            new ReplaceOperation("all", 'from "./hasher"', 'from "./hasher.mjs"'),
+            new ReplaceOperation("all", 'from "../tools/tools"', 'from "../tools/tools.mjs"'),
+          ],
+        },
       ],
     }),
   ],
   resolve: {
     extensions: [".mjs", ".js", ".json"], // Allows importing files without extensions
+    fullySpecified: false, // Allow imports without file extensions for .mjs files
+    extensionAlias: {
+      ".js": [".mjs", ".js"],
+    },
     alias: {
       jquery: "jquery/src/jquery",
     },
     fallback: {
-      path: "path-browserify",
-      crypto: "crypto-browserify",
-      stream: "stream-browserify",
-      zlib: "browserify-zlib",
-      buffer: false,
-      crypto: "crypto-browserify",
-      stream: "stream-browserify",
-      path: "path-browserify",
-      // For Node.js core modules you want to polyfill:
       fs: false,
+      child_process: false,
       net: false,
       tls: false,
-      child_process: false,
+      path: require.resolve("path/"),
+      buffer: require.resolve("buffer/"),
+      crypto: require.resolve("crypto-browserify"),
+      stream: require.resolve("stream-browserify"),
+      zlib: require.resolve("browserify-zlib"),
+      process: false,
       vm: false,
     },
   },
@@ -165,34 +188,15 @@ export default {
     noParse: /argon2\.wasm$/,
     rules: [
       {
-        test: /node_modules[\\/]chi-squared[\\/]cdf\.js$/,
-        use: [
-          "babel-loader",
-          {
-            loader: "string-replace-loader",
-            options: {
-              search: "with (Math)",
-              replace: "const {pow,exp,log,sqrt,PI} = Math;",
-              flags: "g",
-            },
-          },
-        ],
-        enforce: "pre",
-      },
-      {
         test: /\.m?js$/,
         exclude: /node_modules\/(?!crypto-api|bootstrap)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            configFile: path.resolve(__dirname, "babel.config.js"),
-            cacheDirectory: true,
-            compact: false,
-          },
+        options: {
+          configFile: path.resolve(__dirname, "babel.config.js"),
+          cacheDirectory: true,
+          compact: false,
         },
-        resolve: {
-          fullySpecified: false, // Add this for the loader specifically
-        },
+        type: "javascript/auto",
+        loader: "babel-loader",
       },
       {
         test: /node-forge/,
@@ -267,7 +271,7 @@ export default {
       {
         // Third party images are inlined
         test: /\.(png|jpg|gif)$/,
-        exclude: /web\/static/,
+        exclude: /(web\/static|bmfonts)/,
         type: "asset/inline",
       },
     ],
@@ -284,6 +288,8 @@ export default {
     /dependency is an expression/,
     /export 'default'/,
     /Can't resolve 'sodium'/,
+    /Can't resolve.*\.mjs/,
+    /Invalid generator object/,
   ],
   performance: {
     hints: false,
